@@ -22,3 +22,13 @@ user_list = UserViewSet.as_view({
 user_detail = UserViewSet.as_view({
     'get': 'retrieve'
 })
+
+urlpatterns = format_suffix_patterns([
+    url('^$', api_root),
+    url(r'^snippets/$', snippet_list, name='snippet-list'),
+    url(r'^snippets/(?P<pk>[0-9]+)/$', snippet_detail, name='snippet-detail'),
+    url(r'^snippets/(?P<pk>[0-9]+)/highlight/$', snippet_highlight, name='snippet-highlight'),
+    url(r'^users/$', user_list, name='user-list'),
+    url(r'^users/(?P<pk>[0-9]+)/$', user_detail, name='user-detail'),
+    
+])
